@@ -1,0 +1,280 @@
+\documentclass[12pt,spanish]{article}
+\usepackage[spanish,activeacute]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{graphicx}
+\usepackage{psfrag}
+\usepackage{here}
+\usepackage{subfigure}
+\usepackage{lscape}
+\renewcommand{\contentsname}{Contenido}
+\renewcommand{\partname}{Parte}
+\renewcommand{\indexname}{Lista Alfab\'etica}
+\renewcommand{\appendixname}{Ap\'endice}
+\renewcommand{\figurename}{Figura}
+\renewcommand{\listfigurename}{Lista de Figuras}
+\renewcommand{\tablename}{Tabla}
+\renewcommand{\listtablename}{Lista de Tablas}
+\renewcommand{\abstractname}{Resumen}
+\addto\captionsenglish{\renewcommand{\chaptername}{Cap\'{\i}tulo}}
+\renewcommand{\refname}{Bibliograf\'{\i}a}
+%\textheight=23.94cm
+\textwidth=16cm
+\textheight=22cm
+
+\topmargin=-2cm
+\oddsidemargin=0cm
+\renewcommand{\baselinestretch}{1.0}
+\parindent=1.0cm 
+
+\begin{document}
+\title{
+\large \textbf{ESCUELA POLITÉCNICA DEL EJÉRCITO} \\\vspace{20mm}
+\large \textbf{DEPARTAMENTO DE ELÉCTRICA Y ELECTRÓNICA}\\\vspace{20mm}
+\large \textbf{COMUNICACIONES INALÁMBRICAS}\\\vspace{20mm}
+\large \textbf{PROFESOR: ING. ROMÁN LARA}\\\vspace{20mm}
+\large \textbf{MANUAL DE USUARIO}\\\vspace{20mm}
+\large \textbf{CARRO CONTROLADO POR WI - FI}\\\vspace{15mm}
+}
+\author{{CHRISTIAN TORRES}\\{}\\{}\\{}}
+															
+\maketitle %despliega el t\'{\i}tulo
+\newpage
+
+\tableofcontents
+\newpage
+
+%&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+\section{\textbf{INTRODUCCIÓN}}
+En la actualidad las comunicaciones inalámbricas han tomado gran renombre a la hora de buscar soluciones para transmitir y recibir información.  En una comunicación inalámbrica se usan ondas electromagnéticas a través del espacio libre, sobre una banda de frecuencias bien definida, para realizar la transmisión y recepción de la información.\\
+
+Las razones para el uso de una comunicación inalámbrica son sus grandes ventajas a la hora de la reducción de costos y facilidad de mantenimiento, al no utilizar cables que son muy tediosos y representativos en espacio.  La cobertura global es otra ventaja que presentan las comunicaciones inalámbricas, ya que se puede llegar a cubrir lugares donde los cables no son capaces.\\
+
+El siguiente trabajo realizado es un carro controlado mediante una comunicación inalámbrica.  El tipo de protocolo utilizado para realizar la comunicación es el estándar IEEE 802.11 o también conocido como WI-FI.  El carro tendrá funcionalidades mecánicas de movimiento tanto hacia delante como hacia atrás y de dirección, hacia la derecha y la izquierda.  También se puede combinar movilidad con dirección, es decir, se puede realizar movimientos hacia delante con dirección derecha, hacia atrás dirección derecha, hacia delante dirección izquierda, hacia atrás dirección izquierda y sin movimiento (estado de parado).  Una de las características más importantes del carro es la de poder visualizar video, en tiempo real, mediante una cámara que se encuentra instalada en él.  La cámara permite observar los instantes mismos donde el carro se encuentre, así se podrá controlar y conducir mediante una aplicación instalada en la computadora, la cual será de donde se controle y se observe al carro.  Cabe recalcar que se ha añadido un control de X-BOX para el manejo y control del carro.\\
+
+La aplicación utilizada para el manejo del carro controlado por WI-FI, instalada en computador, ha sido desarrollada en Java, con una interfaz gráfica de usuario (GUI) amigable para que el usuario pueda controlarlo.  Además el programa se desarrolló para que funcione con el protocolo UDP, es decir no orientado a la conexión, esto se lo realiza para poder tener control del carro en tiempo real.\\
+
+El funcionamiento en general se describe así; el carro contiene un router inalámbrico con el protocolo IEEE 802.11, a este se conectará, inalámbricamente, la aplicación instalada en la computadora para realizar el control del carro.  La cámara, para el envío de video, se conecta mediante el protocolo IEEE 802.3, o más conocido como Ethernet, al router inalámbrico.  De esta manera se genera la conexión entre el carro y la computadora, finalmente se abre la aplicación y se procede a darle las órdenes al carro.\\
+
+En el presente manual de usuario se muestra la utilización y manejo de la aplicación para el controlar el carro, así como también como debemos encender el carro para el correcto funcionamiento del mismo.
+
+
+\section{\textbf{OBJETIVOS}} %General y/o específicos de ser el caso
+\subsection{\textbf{OBJETIVO GENERAL}}
+\begin{itemize}
+\item Diseñar e implementar un controlador inalámbrico para un carro de juguete mediante el protocolo IEEE 802.11 (WI-FI).  Además realizar la transmisión de video, desde el carro hacia el computador, para la visualización del mismo en tiempo real.
+\end{itemize}
+\subsection{\textbf{OBJETIVOS ESPECÍFICOS}}
+\begin{itemize}
+\item Investigar acerca del protocolo IEEE 802.11 (WI-FI), para realizar una comunicación inalámbrica.
+\item Definir los parámetros necesarios para la realización del diseño del controlador WI-FI para el carro de juguete.
+\item Implementar UDP como protocolo de transporte de datos, esto permitirá que la comunicación se realice sin mayores retardos y así tener una comunicación en tiempo real.
+\item Utilizar el protocolo IEEE 802.3 para la conexión de la cámara de video con el router inalámbrico.
+\end{itemize}
+\section{\textbf{MATERIALES UTILIZADOS}}
+
+Los materiales utilizados para la construcción del carro controlado por WI-FI, son de carácter reciclado, así se reutiliza módulos y piezas para no afectar con el medio ambiente.  A continuación se presenta la lista de todos los materiales que fueron utilizados en la construcción del carro controlado por WI-FI.
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10cm]{figuras/materiales.png} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Lista de materiales utilizados}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+\section{\textbf{DISEÑO}}
+
+El diseño del carro controlado por WI-FI, se basa en la transmisión y recepción de señales inalámbricamente por medio del protocolo IEEE 802.11n, estas señales llegan al carro mediante un router.  A partir de este las señales se convierte mediante un módulo WIZnet a señales seriales quienes irán hacia un PIC 16F877A quien interpretará dichas señales para realizar las funcionalidades del carro.  A continuación se presenta, en la figura 2, el diseño implementado de una forma más detallada.
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=15cm]{figuras/circuito.jpg} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Circuito diseñado e implementado}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+
+
+\section{\textbf{BIBLIOGRAFÍA}}
+\begin{itemize}
+\item Bernal, I (2005).  Escuela Politécnica del Ejército.  Comunicaciones Inalámbricas.  Disponible en la URL: http://clusterfie.epn.edu.ec/ibernal/html/CURSOS/AbrilAgosto06/
+Inalambricas/CLASES/IntroduccionPUB2.pdf  [Consultado el 30 de junio de 2013].
+\item WIZnet.  Página Principal.  Disponible en la URL: http://www.wiznet.co.kr/  [Consultado el 30 de junio de 2013].
+\item Theuz0007.  Joystick in Java with JInput.  Disponible en URL: http://theuzo007.wordpress.com/
+2012/09/02/joystick-in-java-with-jinput/  [Consultado el 30 de junio de 2013].
+\end{itemize}
+\section{\textbf{ANEXOS}}
+\subsection{\textbf{GUÍA DE USO}}
+A continuación se presenta la guía de usuario para el correcto manejo del equipo tanto del carro como de la aplicación.\\
+
+Para el correcto funcionamiento del programa se deben copiar los archivos descargados de la página que se encuentra en la bibliografía y copiarlos a la carpeta $"$C:$ \backslash$Windows$ \backslash$System32$"$ esto para el control de XBOX, una vez hecho esto se procede a comprobar las direcciones IP tanto de la cámara y del módulo Wiznet.\\
+Para revisar la dirección IP de la cámara se deberá ir a la clase Principal en control.vista y se observa en la función que conecta a la cámara como se ve a continuación:\\
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=13cm]{figuras/1.png} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Dirección IP de la cámara}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+Para revisar la dirección IP y el puerto del módulo Wiznet se debe ver en la clase ClienteParaWiznet en control.controlador y se observa lo siguiente:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=15cm]{figuras/2.png} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Dirección IP del módulo Wiznet}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+Una vez revisado esto se procede a ejecutar la aplicación como se ve a continuación:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=15cm]{figuras/3.png} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Ejecución de la aplicación}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+Cuando se ejecuta la aplicación se despliega la siguiente pantalla:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10cm]{figuras/4.png} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Aplicación en ejecución}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+En el programa se presentan 3 opciones de control las cuales son:
+\begin{itemize}
+\item Mediante el mouse.
+\item Mediante el teclado.
+\item Mediante un control de XBOX 360.
+\end{itemize}
+Para controlar el carro con el mouse se debe dar clic en la dirección que se desee, para controlarlo mediante el teclado se debe dar clic en el cuadro de texto y se procede a ingresar los números del teclado numérico como se describe a continuación:
+\begin{itemize}
+\item 8 - avanza.
+\item 2 - retrocede.
+\item 6 -  Llantas delanteras a la derecha.
+\item 4 -  Llantas delanteras a la izquierda.
+\item 9 -  Avanza a la derecha.
+\item 7 -  Avanza a la izquierda.
+\item 3 -  Retrocede a la derecha.
+\item 1 -  Retrocede a la izquierda.
+\end{itemize}
+Para controlar el carro con el control de XBOX 360 se debe conectarlo a la PC y dar clic en el botón de Control XBOX360 como se ve a continuación.
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=18cm]{figuras/5.png} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Manipulación de la aplicación}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+Una vez que se da clic aparece el siguiente mensaje:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8cm]{figuras/6.png} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Mensaje de información}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+Se procede a dar clic en Aceptar y se observa que la interfaz del programa ha cambiado como se a continuación:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11cm]{figuras/7.png} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Interfaz Gráfica de Usuario (GUI) de la aplicación}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+Cuando el usuario comienza a usar el control se muestran animaciones, a continuación se ve un ejemplo cuando se aplasta el botón de avanzar:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.5cm]{figuras/8.png} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Interfaz Gráfica de usuario}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+De esta manera funciona el control de XBOX 360, ahora para conectar la cámara se debe dar clic en el menú Estado y dar clic en Conectar como se ve a continuación:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=10cm]{figuras/9.png} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Conectando la cámara}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+Una vez hecho esto se abre la ventana de Internet Explorer cabe recalcar que se debe configurar a este navegador WEB como predeterminado. Como parte fundamental el navegador debe de estar configurado de una manera especial para visualizar la imagen que envía la cámara, para esto se debe de ir al icono de configuración como se ve a continuación:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11.5cm]{figuras/10.png} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Abriendo Internet Explorer para la GUI de la cámara}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+Se despliega la siguiente ventana en donde se debe dar clic en la pestaña de Seguridad y dar clic en Nivel Personalizado como se observa a continuación:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6cm]{figuras/11.png} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Configurando Internet Explorer}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+Ahora se baja hasta las configuraciones de Controles y complementos de ActiveX y dejarlas como se ve a continuación:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=6cm]{figuras/12.png} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Configurando ActiveX para visualizar el video de la cámara}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=7cm]{figuras/12.png} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Configurando Internet Explorer}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+De esta manera dejamos el explorador listo para visualizar el video de la cámara, para entrar a la visualización se debe ingresar el User y el Password que son MOP en ambos casos, y dar clic en Submit como se observa a continuación:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=8cm]{figuras/13.png} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Ingresando a la visualización del video de la cámara}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+Ya hecho esto se observara el video como se ve en la siguiente imagen:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=15cm]{figuras/14.png} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Prueba de funcionamiento de la cámara}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=15cm]{figuras/15.png} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Prueba de funcionamiento de la cámara}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+Para poner en funcionamiento el carro se debe activar el siguientes switch:
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11cm]{figuras/16.jpg} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Switch de encendido del carro controlado por WI-FI}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+%&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
+
+\subsection{Fotos del carro en funcionamiento}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11cm]{figuras/a.jpg} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Carro controlado por WI-FI vista frontal}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11cm]{figuras/b.jpg} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Carro controlado por WI-FI vista lateral derecha}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9cm]{figuras/c.jpg} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Carro controlado por WI-FI vista trasera}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=9cm]{figuras/d.jpg} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Carro controlado por WI-FI circuiteria}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=11cm]{figuras/e.jpg} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Carro controlado por WI-FI vista superior}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+\begin{figure}[H]
+	\centering
+		\includegraphics[width=14cm]{figuras/f.jpg} %si notan existe una carpeta figuras y dentro de ella la figura deee.jpg, hay que simplemente direccionarla adecuadamente para que la puedan incluir
+	\caption{Carro controlado por WI-FI vista lateral izquierda}
+	\label{deee}	%el label es precisamente la etiqueta es para hacer referencia de la figura y se lo hace con \ref{lo que está dentro del caption} en este caso \ref{deee}
+\end{figure}
+\end{document}

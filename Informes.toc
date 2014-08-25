@@ -1,0 +1,11 @@
+\select@language {spanish}
+\contentsline {section}{\numberline {1}\textbf {INTRODUCCI\'ON}}{3}
+\contentsline {section}{\numberline {2}\textbf {OBJETIVOS}}{4}
+\contentsline {subsection}{\numberline {2.1}\textbf {OBJETIVO GENERAL}}{4}
+\contentsline {subsection}{\numberline {2.2}\textbf {OBJETIVOS ESPEC\'IFICOS}}{4}
+\contentsline {section}{\numberline {3}\textbf {MATERIALES UTILIZADOS}}{4}
+\contentsline {section}{\numberline {4}\textbf {DISE\~NO}}{5}
+\contentsline {section}{\numberline {5}\textbf {BIBLIOGRAF\'IA}}{7}
+\contentsline {section}{\numberline {6}\textbf {ANEXOS}}{7}
+\contentsline {subsection}{\numberline {6.1}\textbf {GU\'IA DE USO}}{7}
+\contentsline {subsection}{\numberline {6.2}Fotos del carro en funcionamiento}{16}
